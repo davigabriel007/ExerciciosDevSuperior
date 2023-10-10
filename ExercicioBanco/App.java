@@ -7,8 +7,9 @@ public class App {
 
         int number;
         String holder;
-        double balance, amount;
+        double initialDeposit, amount;
         char option;
+        Account account;
 
         System.out.print("Enter the account number:");
         number = scan.nextInt();
@@ -23,38 +24,37 @@ public class App {
 
         if (option == 'y') {
             System.out.print("Enter initial deposit value:");
-            balance = scan.nextDouble();
+            initialDeposit = scan.nextDouble();
+            account = new Account(number, holder, initialDeposit);
         } else {
-            balance = 0.0;
+           account = new Account(number, holder);
         }
-
-        Account newAccount = new Account(number, holder, balance);
 
         System.out.println();
 
-        System.out.println("Account data: " + newAccount);
+        System.out.println("Account data: " + account);
 
         System.out.println();
 
         System.out.print("Enter a deposit value: ");
         amount = scan.nextDouble();
 
-        newAccount.deposit(amount);
+        account.deposit(amount);
 
         System.out.println();
 
-        System.out.println("Updated account data: " + newAccount);
+        System.out.println("Updated account data: " + account);
 
         System.out.println();
 
         System.out.print("Enter a withdraw value: ");
         amount = scan.nextDouble();
 
-        newAccount.withdraw(amount);
+        account.withdraw(amount);
 
         System.out.println();
 
-        System.out.println("Updated account data: " + newAccount);
+        System.out.println("Updated account data: " + account);
 
         scan.close();
 
